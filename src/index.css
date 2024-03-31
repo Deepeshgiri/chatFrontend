@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('./bgimg.webp');
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    
+  }
+
+  /*scroll bar*/
+  ::-webkit-scrollbar{
+    cursor: pointer;
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track{
+   
+    background: #555;
+  }
+  ::-webkit-scrollbar-thumb{
+
+    background: #121212;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover{
+    background: #a29e9e;
+  }
