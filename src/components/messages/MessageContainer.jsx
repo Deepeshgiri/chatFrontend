@@ -1,17 +1,25 @@
 import React from "react";
 import Messages from "./Messages";
 import MessageInput from "./MessageInput";
+import StartMessage from "./StartMessage";
 
 function MessageContainer() {
+  let noChatSelected = true;
   return (
     <div className="md:min-w-[450px] flex flex-col">
-      <div className="bg-slate-600 px-4 ">
-        <span className="label-text">To : </span>
-        <span className="text-gray-900 font-bold ">CapDist</span>
-      </div>
+      {noChatSelected ? (
+        <StartMessage />
+      ) : (
+        <>
+          <div className="bg-slate-600 px-4 ">
+            <span className="label-text">To : </span>
+            <span className="text-gray-900 font-bold ">CapDist</span>
+          </div>
 
-      <Messages />
-      <MessageInput/>
+          <Messages />
+          <MessageInput />
+        </>
+      )}
     </div>
   );
 }
