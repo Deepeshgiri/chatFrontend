@@ -54,7 +54,7 @@ function useSignup() {
       localStorage.setItem("chat-user", JSON.stringify(data));
       setAuthUser(data);
 
-      console.log(data);
+     
     } catch (error) {
       toast.error(error.message);
       console.log(error);
