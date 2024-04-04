@@ -14,10 +14,12 @@ const useLogin = () => {
       const res = await fetch(`${BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "Application/json" },
+        withCredentials: true, credentials: 'include' ,
         body: JSON.stringify({ userName, password }),
       });
+      console.log(res)
       const data =await  res.json();
-    //   console.log(!data.ok)
+      
       if (data.error) {
         throw new Error(data.error);
       }
