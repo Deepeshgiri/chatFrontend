@@ -1,10 +1,10 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { useAuthContext } from "./AuthContext";
 import io from "socket.io-client";
-// import { Common } from "../config/Config";
+import { Common } from "../config/Config";
 
 const SocketContext = createContext();
-
+const BASE_URL = Common.BASE_URL 
 
 export const useSocketContext = () => {
 	return useContext(SocketContext);
@@ -15,11 +15,11 @@ export const SocketContextProvider = ({ children }) => {
 	const [onlineUsers, setOnlineUsers] = useState([]);
 	const { authUser } = useAuthContext();
 
-  // const BASE_URL = Common.BASE_URL 
+   
 	useEffect(() => {
     
 		if (authUser) {
-			const socket = io(`http://localhost:4000`, {
+			const socket = io(BASE_URL, {
 				query: {
 					userId: authUser._id,
 				},
