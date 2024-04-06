@@ -4,13 +4,13 @@ import useGetConversation from '../../hooks/useGetConversation'
 
 function ConversationPanel() {
   const {loading, conversation} = useGetConversation()
-  console.log(conversation)
+ 
 
   
   return (
     <div className=' flex flex-col overflow-auto'>
 
-{conversation.map((chat)=>(<Conversation props={chat} key={chat._id} />))}
+{conversation?.map((chat)=>(<Conversation props={chat} key={chat._id} />))}
 
         { loading? <span className='loading loading-spinner'></span>: null}
        

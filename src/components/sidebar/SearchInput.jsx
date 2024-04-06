@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
-import useGetSelected from "../../hooks/useGetSelected";
+import useGetSelected from "../../zustand/useGetSelected";
 import useGetConversation from "../../hooks/useGetConversation";
 import toast from "react-hot-toast";
 

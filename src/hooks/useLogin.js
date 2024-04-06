@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Common } from "../config/Config";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../context/AuthContext";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Common } from "../config/Config";
 import { toast } from "react-hot-toast";
 
@@ -31,7 +31,7 @@ function useGetConversation() {
     };
 
     getConversation();
-  }, []);
+  },[BASE_URL]);
   return { loading, conversation };
 }
 

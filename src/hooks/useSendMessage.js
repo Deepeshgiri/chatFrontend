@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {toast} from 'react-hot-toast'
-import useGetSelected from '../hooks/useGetSelected'
+import useGetSelected from '../zustand/useGetSelected'
 import {Common} from '../config/Config'
 function useSendMessage() {
   const [loading, setLoading] = useState(false)
@@ -24,6 +24,7 @@ function useSendMessage() {
             throw new Error (data.error)
         }
         setMessages([...messages, data])
+        console.log("11111",messages,"22222",data)
     } catch (error) {
         toast.error(error.message)
     }finally{

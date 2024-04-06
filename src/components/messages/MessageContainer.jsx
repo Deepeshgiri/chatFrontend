@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Messages from "./Messages";
 import MessageInput from "./MessageInput";
 import StartMessage from "./StartMessage";
-import useGetSelected from "../../hooks/useGetSelected";
+import useGetSelected from "../../zustand/useGetSelected";
 
 function MessageContainer() {
   const { selectedConversation, setSelectedConversation } = useGetSelected();
@@ -24,7 +24,7 @@ function MessageContainer() {
             </span>
           </div>
 
-          <Messages />
+          <Messages  />
           <MessageInput />
         </>
       )}

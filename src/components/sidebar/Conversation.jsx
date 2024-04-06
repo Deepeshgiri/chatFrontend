@@ -1,18 +1,25 @@
-import React, { useState } from "react";
-import backimg from "../../backimg.jpg";
-import useGetSelected from "../../hooks/useGetSelected";
+import React from "react";
+
+import { useSocketContext } from "../../context/SocketContext";
+import useGetSelected from '../../zustand/useGetSelected'
+
+
 function Conversation({ props }) {
   const { selectedConversation, setSelectedConversation } = useGetSelected();
   const isActive = selectedConversation?._id === props._id;
+  const { onlineUsers } = useSocketContext();
+
+  const isOnline = onlineUsers?.includes(props._id);
+ 
   return (
     <>
       <div
         className={`flex gap-2 items-center hover:text-gray-800 rounded p-2  cursor-pointer ${
           isActive ? "bg-gray-400" : null
         }`}
-        onClick={()=>setSelectedConversation(props)}
+        onClick={() => setSelectedConversation(props)}
       >
-        <div className="avatar online">
+        <div className={`avatar ${isOnline ? "online" : ""}`}>
           <div className="rounded-full w-12">
             <img alt="avatar" src={props.profilePic} />
           </div>

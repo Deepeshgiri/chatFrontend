@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import toast from "react-hot-toast";
-import { useAuthContext } from "../context/AuthContext";
+// import { useAuthContext } from "../context/AuthContext";
 import { Common } from "../config/Config";
+import {useNavigate} from 'react-router-dom'
 
 const BASE_URL = Common.BASE_URL;
 
 function useSignup() {
   const [loading, setLoading] = useState(false);
-  const { setAuthUser } = useAuthContext();
-
+  // const { setAuthUser } = useAuthContext();
+const navigate = useNavigate()
   const signup = async ({
     fullName,
     userName,
@@ -51,15 +52,21 @@ function useSignup() {
         throw new Error(data.error);
       }
       //set local storage
-      localStorage.setItem("chat-user", JSON.stringify(data));
-      setAuthUser(data);
+      // localStorage.setItem("chat-user", JSON.stringify(data));
+      // setAuthUser(data);
 
+      toast.success("Signed Up Success")
+navigate('/login')
      
     } catch (error) {
       toast.error(error.message);
       console.log(error);
+      if(error.message === "Duplicate user"){
+        navigate('/login')
+      }
     } finally {
       setLoading(false);
+      
     }
   };
   return { loading, signup };

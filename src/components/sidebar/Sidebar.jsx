@@ -6,7 +6,7 @@ import LogoutBtn from "./LogoutBtn";
 
 function Sidebar() {
   return (
-    <div className="border-r border-slate-500 p-4 flex flex-col overflow-auto">
+    <div className="border-r border-slate-500 p-4 flex flex-col overflow-auto ">
       
         <SearchInput />
         <div className="divider px-1"></div>

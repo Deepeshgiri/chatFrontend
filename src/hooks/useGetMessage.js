@@ -1,43 +1,41 @@
-import React, { useEffect, useState } from "react";
-import useGetSelected from "./useGetSelected";
+import  { useEffect, useState } from "react";
+import useGetSelected from "../zustand/useGetSelected";
 import { Common } from "../config/Config";
 import toast from "react-hot-toast";
 
 const useGetMessage = () => {
   const BASE_URL = Common.BASE_URL;
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(false);
   const { messages, setMessages, selectedConversation } = useGetSelected();
 
-  useEffect(()=>{
+  useEffect(() => {
     const getMessage = async () => {
-        setLoading(true);
-        try {
-          const res = await fetch(
-            `${BASE_URL}/api/message/get/${selectedConversation?._id}`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "Application/json" },
-              withCredentials:true , credentials:"include"
-            }
-          );
-          const data = await res.json();
-          if(data.error){
-            throw new Error (data.error)
+      setLoading(true);
+      try {
+        const res = await fetch(
+          `${BASE_URL}/api/message/get/${selectedConversation?._id}`,
+          {
+            method: "GET",
+            headers: { "Content-Type": "Application/json" },
+            withCredentials: true,
+            credentials: "include",
           }
-          setMessages(data)
-        } catch (error) {
-          toast.error(error.message);
-        } finally {
-          setLoading(false);
+        );
+        const data = await res.json();
+        if (data.error) {
+          throw new Error(data.error);
         }
-      };
-      if(selectedConversation?._id){
-        getMessage()
+        setMessages(data);
+      } catch (error) {
+        toast.error(error.message);
+      } finally {
+        setLoading(false);
       }
-      
-  },[selectedConversation?._id, setMessages])
+    };
+    if (selectedConversation?._id) getMessage();
+  }, [selectedConversation?._id, setMessages,BASE_URL]);
 
-  return {messages ,loading}
+  return { messages, loading };
 };
 
 export default useGetMessage;
