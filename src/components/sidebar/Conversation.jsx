@@ -10,7 +10,7 @@ function Conversation({ props }) {
   const { onlineUsers } = useSocketContext();
 
   const isOnline = onlineUsers?.includes(props._id);
- 
+ console.log(onlineUsers)
   return (
     <>
       <div
